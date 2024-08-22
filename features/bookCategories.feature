@@ -9,11 +9,19 @@ Feature: Book Categories
   #*      , Biography/Autobiography ,Romance, Short Story, Essay, Memoir, Poetry, Thrillers, Young adults
 
 
-  # TODO: verify users see 21 book categories
-  Scenario: Display 21 book categories in the dropdown menu
-    Given the user is on the homepage
-    When the user clicks the "Book Categories" dropdown
-    Then the user should see 21 book categories listed:
+  @lib-03-01
+  Scenario Outline: Verify that user sees 21 book categories
+    Given user is already on the login page
+    And user is already logged in  as "<user-type>"
+    When user clicks Books link
+    And user clicks Book Categories dropdown
+    Then the user should see 21 book categories
+    Examples:
+      | user-type |
+      | student   |
+      | admin     |
+
+
       | ALL                     |
       | Action and Adventure    |
       | Anthology               |
@@ -28,12 +36,12 @@ Feature: Book Categories
       | Historical Fiction      |
       | Horror                  |
       | Science Fiction         |
-      | Biography/Autobiography |   
+      | Biography/Autobiography |
       | Humor                   |
       | Romance                 |
       | Short Story             |
       | Essay                   |
       | Memoir                  |
       | Poetry                  |
-      
+
 
